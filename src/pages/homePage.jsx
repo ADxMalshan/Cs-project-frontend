@@ -21,7 +21,6 @@ export default function HomePage() {
                     <Route path="/*" element={<h1>404 Not found</h1>} />
                 </Routes>
             </div>
-            {/* {showLogin && <LoginModal onClose={() => { showLogin(false) }} />} */}
 
         </div>
     )
