@@ -1,11 +1,11 @@
 // components/LoginModal.jsx
+import "./client/css/loginPage.css"
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import { GrGoogle } from "react-icons/gr";
-import { IoCloseCircle } from "react-icons/io5";
 import RegisterModal from "./registerPage";
 
 export default function LoginModal({ onClose }) {
@@ -29,52 +29,54 @@ export default function LoginModal({ onClose }) {
                 .then((response) => {
                     localStorage.setItem("token", response.data.token);
                     console.log(response.data.token);
-                    onClose();
                     const user = response.data.user;
                     const newUser = response.data.usercreated;
                     // console.log(response.data.usercreated)
                     if (user.role === "admin" || user.role == "superadmin") {
-                        navigate("/admin");
+                        navigate("/");
                     } else {
-                        navigate(0);
+                        navigate("/");
                     }
                     console.log("Login successful", response.data);
-                    toast.custom(
-                        (t) => (
-                            <div
-                                className={`${t.visible ? 'animate-slide-in-left' : 'animate-slide-out-left'
-                                    } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-                            >
-                                <div className="flex-1 w-0 p-4">
-                                    <div className="flex items-start">
-                                        <div className="flex-shrink-0 pt-0.5">
-                                            <img
-                                                className="h-10 w-10 rounded-full "
-                                                src={user.profilePicture}
-                                                alt="loginBackground3.jpeg"
-                                            />
-                                        </div>
-                                        <div className="ml-3 flex-1">
-                                            <p className="text-sm font-medium text-gray-900 flex">
-                                                <span className="text-[var(--color-accent)] mr-2 text-lg capitalize" >HELLOW  </span> <span className="text-lg capitalize">{response.data.user.firstName}</span>
-                                            </p>
-                                            <p className={`${newUser ? 'invisible' : 'visible'} mt-1 text-sm text-gray-500`}>
-                                                welcome back to the CBC! we missed you.
-                                            </p>
+                    toast.custom((t) => (
+                        <div
+                            className={`toast-container ${t.visible ? "slide-in-left" : "slide-out-left"
+                                }`}
+                        >
+                            <div className="toast-content">
+                                <div className="toast-body">
+                                    <img
+                                        className="toast-avatar"
+                                        src={user.profilePicture}
+                                        alt="profile"
+                                    />
 
-                                        </div>
+                                    <div className="toast-text">
+                                        <p className="toast-title">
+                                            <span className="toast-accent">HELLOW</span>
+                                            <span className="toast-name">
+                                                {response.data.user.firstName}
+                                            </span>
+                                        </p>
+
+                                        <p className={`toast-subtitle ${newUser ? "hidden" : ""}`}>
+                                            welcome back to the CBC! we missed you.
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="flex border-l border-gray-200">
-                                    <button
-                                        onClick={() => toast.dismiss(t.id)}
-                                        className="w-full border cursor-pointer border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-pink-600 hover:text-pink-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                    >
-                                        Close
-                                    </button>
-                                </div>
                             </div>
-                        ))
+
+                            <div className="toast-action">
+                                <button
+                                    onClick={() => toast.dismiss(t.id)}
+                                    className="toast-close-btn"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    ));
+
 
                     setLoading(false);
                 });
@@ -145,47 +147,46 @@ export default function LoginModal({ onClose }) {
 
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-[var(--color-secondary)]/40 bg-opacity-50  ">
-            <div className="  w-[1000px]  h-[600px] flex felx-col  items-center bg-[url(/loginImage.jpg)] bg-transparent bg-cover bg-center rounded-2xl  ">
-                <div className="w-[530px]  h-[600px] text-[var(--color-primary)] flex flex-col items-center justify-center text-2xl ">
-                    <h1> Welcome Back to Crystal Beauty Clear ✨</h1>
-                    <p className="m-2 text-center text-gray-600 text-lg max-w-xl mx-auto">
-                        We’re so happy to see you again! Your beauty journey continues here—relax, rejuvenate, and let your natural glow shine with us. 💖
-                    </p>
+        <div className="main">
+            <div className="container">
+                <div className="text-section">
+                    <img src="https://vzkmtbdcbuxxtsmnjwcl.supabase.co/storage/v1/object/public/images/Hailuo_image_459003758819971073.jpg" alt="" />
                 </div>
-                <div className="w-[470px] h-[600px] bg-[var(--color-primary)] shadow-xl rounded-r-2xl flex flex-col justify-center items-center relative">
-                    <button className="text-4xl text-red-500 absolute top-0 right-0 hover:cursor-pointer" onClick={onClose} ><IoCloseCircle /></button>
-                    <div className=" w-[430px] h-[70px]  relative">
-                        <input
-                            onChange={(e) => {
-                                setEmail(e.target.value);
-                            }}
-                            className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
-                            type="email"
-                            placeholder="E-mail"
-                            id="email"
-                        />
-                        <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
-                            E-mail
-                        </label>
-                    </div>
-                    <div className="w-[430px] h-[70px]  relative">
-                        <input
-                            onChange={(e) => {
-                                setPassword(e.target.value);
-                            }}
-                            className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition  "
-                            type="password"
-                            id="password"
-                            placeholder="Password"
-                        />
-                        <label htmlFor="Password" className="absolute left-7 top-0 bg-[var(--color-primary)] text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
-                            Password
+                <div className="form-section">
+                    <div className="main-inputs">
+                        <div className="input-fields">
+                            <input
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                }}
+                                className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
+                                type="email"
+                                placeholder="E-mail"
+                                id="email"
+                            />
+                            <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
+                                E-mail
+                            </label>
+                        </div>
+                        <div className="input-fields">
+                            <input
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }}
+                                className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition  "
+                                type="password"
+                                id="password"
+                                placeholder="Password"
+                            />
+                            <label htmlFor="Password" className="absolute left-7 top-0 bg-[var(--color-primary)] text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
+                                Password
 
-                        </label>
+                            </label>
 
+                        </div>
                     </div>
-                    <div className="w-[430px] h-[70px]  relative ml-4">
+
+                    <div className="button-section">
 
                         <button
                             onClick={handleLogin}

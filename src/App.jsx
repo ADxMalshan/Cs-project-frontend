@@ -7,6 +7,8 @@ import { Toaster } from "react-hot-toast";
 
 import HomePage from "./pages/homePage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import AppointmentPage from "./pages/client/appoinmentPage";
+import LoginModal from "./pages/loginModel";
 
 function App() {
 	return (
@@ -15,7 +17,9 @@ function App() {
 			<Toaster position="bottom-right" reverseOrder={false}/>
 				<Routes path="/*">
 					<Route path="/admin/*" element={<AdminPage/>}/>
+					<Route path="/login" element={<LoginModal/>}/>
 					<Route path="/testing" element={<Testing/>}/>
+					<Route path="/appointment" element={<AppointmentPage/>}/>
 					<Route path="/*" element={<HomePage/>}/>
 				</Routes>
 			</BrowserRouter>
