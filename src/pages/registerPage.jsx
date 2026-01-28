@@ -3,9 +3,10 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { IoCloseCircle } from "react-icons/io5";
+import "./client/css/register.css"
 
-export default function RegisterModal({ onClose }) {
+
+export default function RegisterModal() {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -54,119 +55,105 @@ export default function RegisterModal({ onClose }) {
 
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50  bg-opasity-50 ">
-            <div className="  w-[1000px]  h-[600px] flex felx-col  items-center bg-[url(/loginImage.jpg)]  bg-cover bg-center rounded-2xl ">
-
-                <div className="w-[470px] h-[600px] bg-[var(--color-primary)] shadow-xl rounded-l-2xl flex flex-col justify-center items-center relative">
-                    <button className="text-4xl text-red-500 absolute top-0 left-0 hover:cursor-pointer" onClick={onClose} ><IoCloseCircle /></button>
-                    <div className=" w-[430px] h-[70px]  relative">
+        <div className="modal-overlay">
+            <div className="modal-content">
+                <div className="register-form">
+                    <div className="modal-header">
                         <input
                             onChange={handleChange}
-                            className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
+                            className=" "
                             type="text"
                             name="firstName"
                             value={formData.firstName}
                             placeholder="First Name"
 
                         />
-                        <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
+                        <label htmlFor="email" className="">
                             First Name
                         </label>
                     </div>
-                    <div className="w-[430px] h-[70px]  relative">
+                    <div className="modal-header">
                         <input
                             onChange={handleChange}
                             name="lastName"
-                            className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
+                            className=""
                             type="text"
                             value={formData.lastName}
                             placeholder="Last Name"
                             id="last_name"
                         />
-                        <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
+                        <label htmlFor="email" className="">
                             Last Name
                         </label>
                     </div>
-                    <div className=" w-[430px] h-[70px]  relative">
+                    <div className="modal-header">
                         <input
                             onChange={handleChange}
-                            className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
+                            className=""
                             type="email"
                             value={formData.email}
                             placeholder="E-mail"
                             name="email"
                             id="email"
                         />
-                        <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
+                        <label htmlFor="email" className="">
                             E-mail
                         </label>
                     </div>
-                    <div className=" w-[430px] h-[70px]  relative">
+                    <div className="modal-header">
                         <input
                             onChange={handleChange}
-                            className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
+                            className=" "
                             type="text"
                             value={formData.phone}
                             placeholder="Phone Number"
                             name="phone"
                             id="phone_number"
                         />
-                        <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
+                        <label htmlFor="email" className="">
                             Phone Number
                         </label>
                     </div>
-                    <div className=" w-[430px] h-[70px]  relative">
+                    <div className="modal-header">
                         <input
                             onChange={handleChange}
-                            className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
+                            className=""
                             type="password"
                             value={formData.password}
                             placeholder="Password"
                             name="password"
                             id="password"
                         />
-                        <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
+                        <label htmlFor="email" className="">
                             Password
                         </label>
                     </div>
-                    <div className=" w-[430px] h-[70px]  relative">
+                    <div className="modal-header">
                         <input
                             onChange={handleChange}
-                            className="w-[400px] h-[50px]  border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
+                            className=" "
                             type="password"
                             value={formData.confirmPassword}
                             placeholder="Confirm Password"
                             name="confirmPassword"
                             id="confirm_password"
                         />
-                        <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
+                        <label htmlFor="email" className="">
                             Confirm Password
                         </label>
                     </div>
-                    <div className="w-[430px] h-[70px]  relative ml-4">
-                    <button
-                        onClick={() => {
-                            handleRegister();
-                            onClose()
-                        }}
-                        className={`${loading ? "cursor-not-allowed " : "cursor-pointer"}' w-[400px] h-[50px] mt-[10px]  bg-green-500 text-white rounded-3xl '`}
-                    >
-                        {loading ? "Processing..." : "Register"}
-                    </button>
+                    <div className="">
+                        <button
+                            onClick={() => {
+                                handleRegister();
+                            }}
+                            className={`${loading ? " " : ""}' '`}
+                        >
+                            {loading ? "Processing..." : "Register"}
+                        </button>
                     </div>
-
-
-
-                    <p className="text-gray-600 text-center flex  m-[10px]">
-                        Already have an account? &nbsp; <span onClick={onClose} className="text-green-500 hover:cursor-pointer hover:text-green-700" >Login</span>
-                    </p>
-                </div>
-                <div className="w-[530px]  h-[600px] text-[var(--color-primary)] flex flex-col items-center justify-center text-2xl ">
-                    <h1 className="px-1"> Create Your Crystal Beauty Clear Account 💖</h1>
-                    <p className="m-2 text-center text-gray-600 text-lg max-w-xl mx-auto px-2.5 ">
-                        Welcome to the Crystal family! ✨ <br />
-                        Join us and unlock personalized beauty care, exclusive offers, and a radiant experience that’s made just for you.
-                        Let’s celebrate your natural glow—starting today.
+                    <p className="">
+                        Already have an account? &nbsp; <span className="" >Login</span>
                     </p>
                 </div>
             </div>

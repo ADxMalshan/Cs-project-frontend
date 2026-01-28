@@ -6,14 +6,12 @@ import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import { GrGoogle } from "react-icons/gr";
-import RegisterModal from "./registerPage";
 
 export default function LoginModal({ onClose }) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const [registerPopup, setRegisterPopup] = useState(false)
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -91,55 +89,63 @@ export default function LoginModal({ onClose }) {
                 password: password,
             })
             .then((response) => {
-                // console.log("Login successful", response.data);
-                localStorage.setItem("token", response.data.token);
-                onClose()
+                console.log("Login successful", response.data);
+                localStorage.setItem("token", response.data.token)
                 console.log(response.data.token);
                 // setIsLoggedIn(false)
 
                 const user = response.data.user;
                 // console.log(user.profilePicture);
                 if (user.role === "admin" || user.role === "superadmin") {
-                    navigate("/admin");
+                    navigate("/");
                 } else {
                     navigate("/");
                 }
                 setLoading(false);
-                navigate(0);
-                // toast.custom(
-                //     (t) => (
-                //         <div
-                //             className={`${t.visible ? 'animate-slide-in-left' : 'animate-slide-out-left'
-                //                 } max-w-md w-[360px] bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-                //         >
+                toast.custom(
+                    (t) => (
+                       <div
+                            className={`toast-container ${t.visible ? "slide-in-left" : "slide-out-left"
+                                }`}
+                        >
+                            <div className="toast-content">
+                                <div className="toast-body">
+                                    <img
+                                        className="toast-avatar"
+                                        src={user.profilePicture}
+                                        alt="profile"
+                                    />
 
-                //             <div className="flex-1 w-0 p-4">
-                //                 <div className="flex items-start">
-                //                     <div className="flex-shrink-0 pt-0.5">
-                //                         <img
-                //                             className="h-10 w-10 rounded-full"
-                //                             src={user.profilePicture}
-                //                             alt="loginBackground3.jpeg"
-                //                         />
-                //                     </div>
-                //                     <div className="ml-3 flex-1">
-                //                         <p className="text-sm font-medium text-gray-900 flex">
-                //                             <span className="text-[var(--color-accent)] mr-2 text-lg capitalize" >HELLOW  </span> <span className="text-lg capitalize">{response.data.user.firstName}</span>
-                //                         </p>
-                //                         <p className="mt-1 text-sm text-gray-500">
-                //                             welcome back to the app! we missed you.
-                //                         </p>
-                //                     </div>
-                //                 </div>
-                //             </div>
+                                    <div className="toast-text">
+                                        <p className="toast-title">
+                                            <span className="toast-accent">HELLOW</span>
+                                            <span className="toast-name">
+                                                {response.data.user.firstName}
+                                            </span>
+                                        </p>
 
-                //         </div>
-                //     ))
+                                        <p>
+                                            welcome back to the CBC! we missed you.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="toast-action">
+                                <button
+                                    onClick={() => toast.dismiss(t.id)}
+                                    className="toast-close-btn"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    ))
 
 
             })
             .catch((error) => {
-                console.log("Login failed", error.response.data);
+                console.log("Login failed", error);
                 toast.error(error.response.data.message || "Login failed");
                 setLoading(false);
             });
@@ -205,7 +211,7 @@ export default function LoginModal({ onClose }) {
                             Don't have an account yet? &nbsp;
                             <span className="text-green-500  cursor-pointer hover:text-green-700">
                                 <button onClick={() => {
-                                    setRegisterPopup(true)
+                                    navigate("/register")
                                 }} >Register Now</button>
                             </span>
                         </p>
@@ -213,7 +219,6 @@ export default function LoginModal({ onClose }) {
 
                 </div>
             </div>
-            {registerPopup && <RegisterModal onClose={() => setRegisterPopup(false)} />}
         </div>
     );
 }

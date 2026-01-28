@@ -20,9 +20,6 @@ export default function HomePage() {
                     <Route path="/history" element={<AppointmentHistory />} />
                     <Route path="/update" element={<AppointmentUpdatePage />} />
                     <Route path="/overview/:id" element={<ProductOverview />} />
-                    <Route path="/cart" element={<CartPage />} />
-                    <Route path="/checkout" element={<CheckoutPage />} />
-                    <Route path="/orders" element={<ScrollSwapBox />} />
                     <Route path="/*" element={<h1>404 Not found</h1>} />
                 </Routes>
             </div>

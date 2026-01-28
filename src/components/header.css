@@ -1,14 +1,21 @@
+:root {
+  --black-main: #080312;
+  --purple-gray: #080312;
+  --accent-purple: #190a3e;
+  --light-lavender: #7041d3;
+}
 .header {
     height: 80px;
     width: 100%;
-    background-color: white;
+    background: radial-gradient(circle at top left, var(--black-main), var(--dark-purple));
+    backdrop-filter: blur(10px);
+    outline: var(--light-lavender) solid 1px;
     display: flex;
     align-items: center;
     padding: 0px 20px 0px 20px;
     z-index: 1000;
     align-items: center;
     justify-content: space-between;
-
 }
 .links{
     display: flex;
