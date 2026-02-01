@@ -16,7 +16,7 @@ function App() {
 		<GoogleOAuthProvider clientId = "631792534424-sbpquhqen559e84esbqa4jq92ifd27q4.apps.googleusercontent.com">
 			<BrowserRouter>
 			<Toaster position="bottom-right" reverseOrder={false}/>
-				<Routes path="/*">
+				<Routes path="/*"> 
 					<Route path="/admin/*" element={<AdminPage/>}/>
 					<Route path="/login" element={<LoginModal/>}/>
 					<Route path="/register" element={<RegisterModal/>}/>

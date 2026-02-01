@@ -82,7 +82,8 @@ export default function AppointmentHistory() {
                             <span>Pet Type: {appointments.petDetails[0].petType.toUpperCase()}</span>
                             <span> Service: {appointments.petDetails[0].petBreed.toUpperCase()}</span>
                             <span> Pet Age: {appointments.petDetails[0].petAge}</span>
-                            <span>Date: {appointments.date.split("T")[0]}</span>
+                            <span>Requiest Date: {appointments.date.split("T")[0]}</span>
+                            <span>Appointment date: {appointments.appointmentDate.split("T")[0]}</span>
                         </div>
                         <button onClick={() => { setPopup(true); setAppointmentId(appointments.appointmentId) }} className="cancel-button">Cancel Appointment</button>
                         <button onClick={() => { navigate("/update",{state:{appointments}}) }} className="reschedule-button">Reschedule Appointment</button>

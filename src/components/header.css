@@ -1,44 +1,41 @@
-:root {
-  --black-main: #080312;
-  --purple-gray: #080312;
-  --accent-purple: #190a3e;
-  --light-lavender: #7041d3;
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 80px;
 }
-.header {
-    height: 80px;
-    width: 100%;
-    background: radial-gradient(circle at top left, var(--black-main), var(--dark-purple));
-    backdrop-filter: blur(10px);
-    outline: var(--light-lavender) solid 1px;
-    display: flex;
-    align-items: center;
-    padding: 0px 20px 0px 20px;
-    z-index: 1000;
-    align-items: center;
-    justify-content: space-between;
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
-.links{
-    display: flex;
-    gap: 20px;
+
+
+.navbar nav a {
+  margin: 0 15px;
+  color: #ddd;
+  text-decoration: none;
 }
-.link{
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 18px;
-    background-color: black;
-    border-radius: 5px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 40px;
-    
+
+.btn-primary {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  border: none;
+  padding: 12px 22px;
+  margin-left: 15px;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
 }
-.link:hover{
-    background-color: white;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    color: black;
-    transition: 0.3s;
-    cursor: pointer;
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #a855f7;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 25px;
+  cursor: pointer;
 }

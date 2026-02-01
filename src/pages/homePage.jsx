@@ -1,11 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "../components/header";
 import ProductOverview from "./client/productOverview";
-import CartPage from "./client/cart";
-import CheckoutPage from "./client/checkout";
 import StarRating from "./test3";
 import FirstPage from "./client/firstPage";
-import ScrollSwapBox from "./test3";
 import AppointmentHistory from "./client/appointmentHistory";
 import AppointmentUpdatePage from "./client/appoitmentUpdate";
 export default function HomePage() {

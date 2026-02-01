@@ -30,14 +30,14 @@ export default function AppointmentUpdatePage() {
             appointmentDate: date
         };
 
-        axios.post(import.meta.env.VITE_BACKEND_URL+"/api/appointment", appointmentData, {
+        axios.put(import.meta.env.VITE_BACKEND_URL+"/api/appointment/"+locationData.state.appointments.appointmentId, appointmentData, {
             headers: {
                 Authorization: "Bearer " + token,
             }
         })
         .then(response => {
-            console.log("Appointment booked successfully:", response.data);
-            toast.success("Appointment booked successfully");
+            console.log("Appointment updated successfully:", response.data);
+            toast.success("Appointment Updated successfully");
             setName("");
             setPhone("");
             setService("");
@@ -48,8 +48,8 @@ export default function AppointmentUpdatePage() {
             setPetAge("");
         })
         .catch(error => {
-            console.error("Error booking appointment:", error);
-            toast.error("Error booking appointment");
+            console.error("Error updating appointment:", error);
+            toast.error("Error updating appointment");
         });
     }
 
