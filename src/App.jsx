@@ -10,6 +10,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import AppointmentPage from "./pages/client/appoinmentPage";
 import LoginModal from "./pages/loginModel";
 import RegisterModal from "./pages/registerPage";
+import UserProfile from "./pages/client/userProfile";
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 					<Route path="/register" element={<RegisterModal/>}/>
 					<Route path="/testing" element={<Testing/>}/>
 					<Route path="/appointment" element={<AppointmentPage/>}/>
+					<Route path="/profile" element={<UserProfile/>}/>
 					<Route path="/*" element={<HomePage/>}/>
 				</Routes>
 			</BrowserRouter>

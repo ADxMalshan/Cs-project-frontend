@@ -1,0 +1,441 @@
+/* ====== Page Background ====== */
+.ad-wrap {
+  min-height: 100vh;
+  display: flex;
+  background: radial-gradient(circle at top, #2b0b4a 0%, #12011f 40%, #0b0614 100%);
+  color: #ffffff;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* ====== Sidebar ====== */
+.ad-sidebar {
+  width: 280px;
+  padding: 18px 16px;
+  background: rgba(10, 6, 18, 0.55);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ad-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ad-brandIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.8), rgba(168, 85, 247, 0.18));
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  font-size: 20px;
+}
+
+.ad-brandTitle {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.ad-brandSub {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+.ad-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ad-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  color: rgba(255, 255, 255, 0.86);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: 0.18s ease;
+  opacity: 0.9;
+}
+
+.ad-link svg {
+  font-size: 20px;
+  opacity: 0.95;
+}
+
+.ad-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.ad-link.active {
+  background: radial-gradient(circle at top, rgba(168, 85, 247, 0.23), rgba(168, 85, 247, 0.08));
+  border-color: rgba(168, 85, 247, 0.25);
+}
+
+.ad-logout {
+  margin-top: auto;
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.18s ease;
+}
+
+.ad-logout:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* ====== Main ====== */
+.ad-main {
+  flex: 1;
+  padding: 18px 24px 40px;
+}
+
+/* ====== Topbar ====== */
+.ad-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0 18px;
+}
+
+.ad-search {
+  flex: 1;
+  max-width: 560px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px);
+}
+
+.ad-searchIcon {
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+.ad-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+}
+
+.ad-search input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.ad-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ad-rolePill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ad-roleCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(168, 85, 247, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  font-weight: 700;
+}
+
+.ad-avatar {
+  font-size: 34px;
+  opacity: 0.9;
+}
+
+/* ====== Title ====== */
+.ad-title {
+  margin: 8px 0 18px;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+/* ====== Cards ====== */
+.ad-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(190px, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.ad-card {
+  border-radius: 18px;
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+}
+
+.ad-card.warm {
+  border-color: rgba(255, 193, 7, 0.20);
+}
+
+.ad-card.cool {
+  border-color: rgba(59, 130, 246, 0.20);
+}
+
+.ad-card.deep {
+  border-color: rgba(20, 184, 166, 0.20);
+}
+
+.ad-cardIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 20px;
+}
+
+.ad-cardIcon.purple {
+  background: rgba(168, 85, 247, 0.18);
+  border-color: rgba(168, 85, 247, 0.25);
+}
+
+.ad-cardIcon.gold {
+  background: rgba(255, 193, 7, 0.15);
+  border-color: rgba(255, 193, 7, 0.22);
+}
+
+.ad-cardIcon.blue {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
+.ad-cardIcon.teal {
+  background: rgba(20, 184, 166, 0.15);
+  border-color: rgba(20, 184, 166, 0.22);
+}
+
+.ad-cardValue {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ad-cardLabel {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.78;
+}
+
+/* ====== Panel ====== */
+.ad-panel {
+  margin-top: 12px;
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+}
+
+.ad-panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 6px 14px;
+}
+
+.ad-panelHead h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.ad-viewAll {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 9px 12px;
+  border-radius: 14px;
+  transition: 0.18s ease;
+}
+
+.ad-viewAll:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* ====== Table ====== */
+.ad-tableWrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ad-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+
+.ad-table thead th {
+  text-align: left;
+  font-size: 12px;
+  opacity: 0.8;
+  padding: 14px 12px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.ad-table tbody td {
+  padding: 14px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.90);
+}
+
+.ad-empty {
+  text-align: center;
+  padding: 26px 12px !important;
+  opacity: 0.7;
+}
+
+/* ====== Badges ====== */
+.ad-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ad-badge.pending {
+  background: rgba(255, 193, 7, 0.12);
+  border-color: rgba(255, 193, 7, 0.20);
+}
+
+.ad-badge.approved {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.20);
+}
+
+.ad-badge.complete {
+  background: rgba(20, 184, 166, 0.12);
+  border-color: rgba(20, 184, 166, 0.20);
+}
+
+/* ====== Action Buttons ====== */
+.ad-actionsCol {
+  width: 260px;
+}
+
+.ad-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ad-btn {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.18s ease;
+}
+
+.ad-btn:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.ad-btn.approve {
+  background: rgba(59, 130, 246, 0.14);
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
+.ad-btn.complete {
+  background: rgba(20, 184, 166, 0.14);
+  border-color: rgba(20, 184, 166, 0.22);
+}
+
+.ad-btn.cancel {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.22);
+}
+
+/* ====== Loader alignment ====== */
+.ad-loader {
+  padding: 40px 0;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 1100px) {
+  .ad-cards {
+    grid-template-columns: repeat(2, minmax(190px, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .ad-sidebar {
+    display: none;
+  }
+  .ad-main {
+    padding: 16px;
+  }
+  .ad-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .ad-cards {
+    grid-template-columns: 1fr;
+  }
+  .ad-profile {
+    gap: 8px;
+  }
+}

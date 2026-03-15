@@ -20,7 +20,18 @@ export default function RegisterModal() {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        if (name === "phone") {
+            // Allow only digits and limit to 10 characters
+            const cleanedValue = value.replace(/\D/g, "").slice(0, 10);
+            setFormData((prev) => ({ ...prev, [name]: cleanedValue }));
+        } else {
+            setFormData((prev) => ({ ...prev, [name]: value }));
+        }
+        if(name==="firstName" || name==="lastName") {
+            //remove any non-alphabetic characters from the name fields
+            const cleanedValue = value.replace(/[^a-zA-Z\s]/g, "");
+            setFormData((prev) => ({ ...prev, [name]: cleanedValue }));
+        }
     }
 
     function handleRegister() {
@@ -43,6 +54,7 @@ export default function RegisterModal() {
             .then((response) => {
                 console.log("Registration successful", response.data);
                 toast.success("Registration successful");
+                navigate("/login");
             })
             .catch((error) => {
                 console.log("Registration failed", error?.response?.data);
@@ -68,9 +80,7 @@ export default function RegisterModal() {
                             placeholder="First Name"
 
                         />
-                        <label htmlFor="email" className="">
-                            First Name
-                        </label>
+            
                     </div>
                     <div className="modal-header">
                         <input
@@ -82,9 +92,7 @@ export default function RegisterModal() {
                             placeholder="Last Name"
                             id="last_name"
                         />
-                        <label htmlFor="email" className="">
-                            Last Name
-                        </label>
+                       
                     </div>
                     <div className="modal-header">
                         <input
@@ -96,9 +104,7 @@ export default function RegisterModal() {
                             name="email"
                             id="email"
                         />
-                        <label htmlFor="email" className="">
-                            E-mail
-                        </label>
+                        
                     </div>
                     <div className="modal-header">
                         <input
@@ -109,10 +115,10 @@ export default function RegisterModal() {
                             placeholder="Phone Number"
                             name="phone"
                             id="phone_number"
+                            maxLength={"10"}
+                            minLength={"10"}
                         />
-                        <label htmlFor="email" className="">
-                            Phone Number
-                        </label>
+                        
                     </div>
                     <div className="modal-header">
                         <input
@@ -124,9 +130,7 @@ export default function RegisterModal() {
                             name="password"
                             id="password"
                         />
-                        <label htmlFor="email" className="">
-                            Password
-                        </label>
+                        
                     </div>
                     <div className="modal-header">
                         <input
@@ -138,9 +142,7 @@ export default function RegisterModal() {
                             name="confirmPassword"
                             id="confirm_password"
                         />
-                        <label htmlFor="email" className="">
-                            Confirm Password
-                        </label>
+                        
                     </div>
                     <div className="">
                         <button

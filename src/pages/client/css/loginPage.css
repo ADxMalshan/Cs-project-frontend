@@ -1,262 +1,303 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.main {
-    width: 100%;
-    height: 100vh;
-    background-image: url("https://vzkmtbdcbuxxtsmnjwcl.supabase.co/storage/v1/object/public/images/Hailuo_image_459015565789958151.jpg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-.container {
-    width: 1000px;
-    height: 600px;
-    display: flex;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 16px;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-.text-section {
-    width: 530px;
-    height: 600px;
-    color: var(--color-primary);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    text-align: center;
-}
-.text-section img {
-    width: 100%;
-    height: 100%;
-    border-radius: 16px 0px 0px 16px;
-    margin-bottom: 0px;
-    object-fit: cover;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: "Poppins", sans-serif;
 }
 
-.form-section {
-    width: 470px;
-    height: 600px;
-    background-color: var(--primary-blue);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-}
-.main-inputs {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 430px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 80px;
-}
-.input-fields {
-    width: 430px;
-    height: 70px;
-    position: relative;
-    margin-bottom: 20px;
-}
-.input-fields input {
-    
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    outline: none;
-    background-color: var(--primary-blue);
-}
-.input-fields label {
-    position: absolute;
-    top: -10px;
-    left: 10px;
-    background-color: var(--primary-blue);
-    padding: 0 5px;
-    font-size: 14px;
-    color: #666;
-}
-.input-fields input:focus {
-    border-color: var(--accent-cyan);
-}
-.input-fields input::placeholder {
-    color: #aaa;
-}
-.button-section {
-    position: absolute;
-    bottom: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    width: 430px;
-    height: 200px;
-}
-.button-section button {
-    width: 80%;
-    height: 50px;
-    background-color: var(--primary-blue);
-    color: var(--accent-cyan);
-    font-size: 20px;
-    border: 1px solid var(--accent-cyan);
-    border-radius: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-}
-.button-section button:hover {
-    background-color: var(--accent-cyan);
-    color: var(--secondary-white);
-}
-.button-section p{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: var(--secondary-white);
-}
-.button-section p span{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.main{
+width:100%;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
 
-}
-/* Container */
-.toast-container {
-  max-width: 28rem;
-  width: 100%;
-  background: #ffffff;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  display: flex;
-  pointer-events: auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+background: radial-gradient(circle at top,#3b0b63,#0b0216);
 }
 
-/* Content */
-.toast-content {
-  flex: 1;
-  padding: 16px;
+.login-wrapper{
+width:1000px;
+height:550px;
+display:flex;
+border-radius:20px;
+overflow:hidden;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.15);
+box-shadow:0 0 40px rgba(170,0,255,0.3);
 }
 
-.toast-body {
-  display: flex;
-  align-items: flex-start;
+/* LEFT IMAGE */
+
+.image-section{
+width:45%;
 }
 
-.toast-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.image-section img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-/* Text */
-.toast-text {
-  margin-left: 12px;
-  flex: 1;
+/* RIGHT FORM */
+
+.form-section{
+width:55%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:40px;
+color:white;
 }
 
-.toast-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #111827;
-  display: flex;
-  align-items: center;
+.login-title{
+font-size:28px;
+font-weight:600;
+margin-bottom:5px;
 }
 
-.toast-accent {
-  color: var(--color-accent);
-  margin-right: 8px;
-  font-size: 18px;
+.login-subtitle{
+font-size:14px;
+opacity:0.7;
+margin-bottom:30px;
 }
 
-.toast-name {
-  font-size: 18px;
-  text-transform: capitalize;
+/* INPUTS */
+
+.main-inputs{
+width:100%;
+display:flex;
+flex-direction:column;
+gap:20px;
 }
 
-.toast-subtitle {
-  margin-top: 4px;
-  font-size: 14px;
-  color: #6b7280;
+.input-fields{
+position:relative;
+width:100%;
 }
 
-/* Action */
-.toast-action {
-  border-left: 1px solid #e5e7eb;
-  display: flex;
+.input-fields input{
+width:100%;
+height:50px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.3);
+background:transparent;
+padding:0 20px;
+color:white;
+font-size:14px;
+outline:none;
 }
 
-.toast-close-btn {
-  padding: 16px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: #db2777;
-  font-weight: 500;
+.input-fields label{
+position:absolute;
+left:20px;
+top:50%;
+transform:translateY(-50%);
+color:#c084fc;
+font-size:14px;
+pointer-events:none;
+transition:0.3s;
+background:transparent;
+padding:0 5px;
 }
 
-.toast-close-btn:hover {
-  color: #ec4899;
+/* FLOAT EFFECT */
+
+.input-fields input:focus + label,
+.input-fields input:not(:placeholder-shown) + label{
+top:-1px;
+font-size:12px;
+background:#2b0a47;
 }
 
-/* Animations */
-@keyframes slideInLeft {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
+/* BUTTONS */
+
+.button-section{
+width:100%;
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+align-items:center;
+}
+
+.button-section button{
+width:100%;
+height:50px;
+border-radius:25px;
+border:none;
+font-size:16px;
+cursor:pointer;
+color:white;
+
+background:linear-gradient(90deg,#a855f7,#6d28d9);
+transition:0.3s;
+}
+
+.button-section button:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #a855f7;
+}
+
+.google-icon{
+margin-right:8px;
+}
+
+/* LINKS */
+
+.forgot{
+margin-top:10px;
+font-size:13px;
+opacity:0.7;
+align-self:flex-end;
+cursor:pointer;
+}
+
+.register-text{
+margin-top:10px;
+font-size:14px;
+}
+
+.register-text span{
+color:#c084fc;
+margin-left:5px;
+cursor:pointer;
+}
+
+
+/* ===== Toast Container ===== */
+.toast-container{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  width:320px;
+  padding:16px 18px;
+  border-radius:14px;
+
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(14px);
+
+  border:1px solid rgba(167,139,250,0.4);
+
+  box-shadow:
+  0 10px 40px rgba(124,58,237,0.4),
+  inset 0 0 10px rgba(255,255,255,0.05);
+
+  color:white;
+  font-family:'Poppins',sans-serif;
+}
+
+/* ===== Slide Animations ===== */
+/* ===== Slide Animations (Right Side) ===== */
+
+.slide-in-left{
+  animation:slideInRight .45s ease forwards;
+}
+
+.slide-out-left{
+  animation:slideOutRight .35s ease forwards;
+}
+
+@keyframes slideInRight{
+  from{
+    transform:translateX(120%);
+    opacity:0;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+  to{
+    transform:translateX(0);
+    opacity:1;
   }
 }
 
-@keyframes slideOutLeft {
-  from {
-    transform: translateY(0);
-    opacity: 1;
+@keyframes slideOutRight{
+  from{
+    transform:translateX(0);
+    opacity:1;
   }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
+  to{
+    transform:translateX(120%);
+    opacity:0;
   }
 }
 
-.slide-in-left {
-  animation: slideInLeft 0.4s ease-out forwards;
+/* ===== Toast Body Layout ===== */
+
+.toast-body{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
-.slide-out-left {
-  animation: slideOutLeft 0.4s ease-in forwards;
+/* ===== Avatar ===== */
+
+.toast-avatar{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  object-fit:cover;
+
+  border:2px solid #a855f7;
+
+  box-shadow:
+  0 0 10px rgba(168,85,247,0.6);
 }
 
-/* Utility */
-.hidden {
-  display: none;
+/* ===== Text Section ===== */
+
+.toast-text{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  font-size:14px;
 }
 
+.toast-title{
+  font-weight:600;
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
 
+.toast-accent{
+  color:#c084fc;
+}
+
+.toast-name{
+  color:#ffffff;
+  font-weight:700;
+}
+
+/* ===== Description ===== */
+
+.toast-text p{
+  margin:0;
+  color:#d1d5db;
+  font-size:13px;
+}
+
+/* ===== Action Button ===== */
+
+.toast-action{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.toast-close-btn{
+  background:linear-gradient(90deg,#7c3aed,#a855f7);
+  border:none;
+  padding:6px 14px;
+  border-radius:8px;
+
+  color:white;
+  font-size:13px;
+  font-weight:500;
+
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.toast-close-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 14px rgba(168,85,247,0.5);
+}

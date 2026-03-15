@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loader from "../../components/loader";
 import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
-import "../client/css/user.css"
+import "../client/css/adminUser.css"
 export default function UserView() {
     const [users, setusers] = useState([])
     const [loaded, setLoaded] = useState(false);
@@ -126,7 +126,8 @@ export default function UserView() {
     }
 
     return (
-        <div className="main">
+        
+        <div className="userMain">
             <div className="contentAdmin">
                 {loaded && <table className="userTable">
                     <thead>

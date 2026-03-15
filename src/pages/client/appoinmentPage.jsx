@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./css/appointmentPage.css"
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useLocation } from "react-router-dom";
 export default function AppointmentPage() {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -11,7 +12,16 @@ export default function AppointmentPage() {
     const [petType, setPetType] = useState("");
     const [petBreed, setPetBreed] = useState("");
     const [petAge, setPetAge] = useState("");
+    const location = useLocation();
+    const [selectedService, setSelectedService] = useState("");
+    const [isEditable, setIsEditable] = useState(true);
 
+    useEffect(() => {
+    if (location.state?.selectedService) {
+      setService(location.state.selectedService);
+      setIsEditable(false);
+    }
+  }, [location.state]);
     function handleSubmit() {
        const token = localStorage.getItem("token");
          const appointmentData = {
@@ -81,10 +91,13 @@ export default function AppointmentPage() {
                             </select>
                         </div>
                         <div className="input-group">
-                            <label htmlFor="date">Types of Services</label>
-                            <select value={service} id="service" onChange={(e) => {setService(e.target.value);}} required >
+                            <label htmlFor="date">Types of Services <strong>{selectedService}</strong> </label> 
+                            <select value={service} id="service" disabled={!isEditable} onChange={(e) => {setService(e.target.value);}} required >
                                 <option disabled value="" hidden>Select a service</option>
                                 <option value="grooming">Grooming & Hygiene</option>
+                                <option value="veterinary">Veterinary Care</option>
+                                <option value="walking">Pet Walking</option>
+                                <option value="boarding">Pet Boarding</option>
                                 <option value="vaccination">Vaccination</option>
                                 <option value="health">Health & Wellness</option>
                                 <option value="training">Training & Behavior</option>

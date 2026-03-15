@@ -1,4 +1,4 @@
-export default function getCart() {
+export  function getCart() {
     let cart = localStorage.getItem("cart");
     // console.log(cart)
 

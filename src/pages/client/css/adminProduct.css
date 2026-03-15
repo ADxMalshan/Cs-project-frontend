@@ -1,0 +1,133 @@
+.products-container{
+    width:100%;
+    height:100%;
+    padding:25px;
+    overflow-y:auto;
+}
+
+.products-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.products-header h2{
+    font-size:24px;
+    font-weight:600;
+    color:#ffffff;
+}
+
+/* table wrapper */
+
+.table-wrapper{
+    width:100%;
+    background:rgba(255,255,255,0.05);
+    border-radius:12px;
+    padding:10px;
+}
+
+/* table */
+
+.products-table{
+    width:100%;
+    border-collapse:collapse;
+    color:white;
+}
+
+/* header */
+
+.products-table thead{
+    background:rgba(255,255,255,0.08);
+}
+
+.products-table th{
+    padding:14px;
+    text-align:center;
+    font-weight:600;
+}
+
+/* rows */
+
+.products-table td{
+    padding:14px;
+    text-align:center;
+}
+
+.products-table tbody tr{
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    transition:0.2s;
+}
+
+.products-table tbody tr:hover{
+    background:rgba(255,255,255,0.05);
+}
+
+/* product name */
+
+.product-name{
+    font-weight:500;
+}
+
+/* stock badge */
+
+.stock-badge{
+    background:#6c5ce7;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+/* action buttons */
+
+.action-buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+.delete-btn{
+    font-size:20px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.delete-btn:hover{
+    color:#ff4d4d;
+}
+
+.edit-btn{
+    font-size:20px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.edit-btn:hover{
+    color:#4da6ff;
+}
+
+/* add button */
+
+.add-product-btn{
+    position:fixed;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right:30px;
+    bottom:50px;
+    background:#6c5ce7;
+    color:white;
+    font-size:22px;
+    padding:16px;
+    border-radius:50%;
+    box-shadow:0 6px 15px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.add-product-btn:hover{
+    background:white;
+    color:#6c5ce7;
+    transform:scale(1.1);
+}

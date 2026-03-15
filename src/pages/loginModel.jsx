@@ -31,7 +31,7 @@ export default function LoginModal({ onClose }) {
                     const newUser = response.data.usercreated;
                     // console.log(response.data.usercreated)
                     if (user.role === "admin" || user.role == "superadmin") {
-                        navigate("/");
+                        navigate("/admin");
                     } else {
                         navigate("/");
                     }
@@ -58,7 +58,7 @@ export default function LoginModal({ onClose }) {
                                         </p>
 
                                         <p className={`toast-subtitle ${newUser ? "hidden" : ""}`}>
-                                            welcome back to the CBC! we missed you.
+                                            welcome back to the PAW PET Clinic! we missed you.
                                         </p>
                                     </div>
                                 </div>
@@ -97,14 +97,14 @@ export default function LoginModal({ onClose }) {
                 const user = response.data.user;
                 // console.log(user.profilePicture);
                 if (user.role === "admin" || user.role === "superadmin") {
-                    navigate("/");
+                    navigate("/admin");
                 } else {
                     navigate("/");
                 }
                 setLoading(false);
                 toast.custom(
                     (t) => (
-                       <div
+                        <div
                             className={`toast-container ${t.visible ? "slide-in-left" : "slide-out-left"
                                 }`}
                         >
@@ -125,7 +125,7 @@ export default function LoginModal({ onClose }) {
                                         </p>
 
                                         <p>
-                                            welcome back to the CBC! we missed you.
+                                            welcome back to the PAW PET Clinic ! we missed you.
                                         </p>
                                     </div>
                                 </div>
@@ -154,67 +154,68 @@ export default function LoginModal({ onClose }) {
 
     return (
         <div className="main">
-            <div className="container">
-                <div className="text-section">
-                    <img src="https://vzkmtbdcbuxxtsmnjwcl.supabase.co/storage/v1/object/public/images/Hailuo_image_459003758819971073.jpg" alt="" />
+            <div className="login-wrapper">
+
+                {/* LEFT IMAGE */}
+                <div className="image-section">
+                    <img
+                        src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e"
+                        alt="pet"
+                    />
                 </div>
+
+                {/* RIGHT FORM */}
                 <div className="form-section">
+
+                    <h2 className="login-title">Login to Paws & Care</h2>
+                    <p className="login-subtitle">
+                        Welcome back! Please login to your account.
+                    </p>
+
                     <div className="main-inputs">
+
                         <div className="input-fields">
                             <input
-                                onChange={(e) => {
-                                    setEmail(e.target.value);
-                                }}
-                                className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition "
                                 type="email"
-                                placeholder="E-mail"
                                 id="email"
+                                placeholder=""
+                                onChange={(e) => setEmail(e.target.value)}
                             />
-                            <label htmlFor="email" className="absolute left-7 top-0 bg-white  text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
-                                E-mail
-                            </label>
+                            <label htmlFor="email">E-mail</label>
                         </div>
+
                         <div className="input-fields">
                             <input
-                                onChange={(e) => {
-                                    setPassword(e.target.value);
-                                }}
-                                className="w-[400px] h-[50px] border mt-3 border-gray-300 rounded-3xl text-center m-[5px] peer placeholder-transparent text-sm focus:outline-none focus:border-[var(--color-accent)] transition  "
                                 type="password"
                                 id="password"
-                                placeholder="Password"
+                                placeholder=""
+                                onChange={(e) => setPassword(e.target.value)}
                             />
-                            <label htmlFor="Password" className="absolute left-7 top-0 bg-[var(--color-primary)] text-gray-500 text-sm transition-all  peer-placeholder-shown:top-6 peer-placeholder-shown:text-base peer-placeholder-shown:text-[var(--color-accent)] peer-focus:top-0 peer-focus:text-sm peer-focus:text-[var(--color-accent)] peer-focus:bg-[var(--color-primary)]">
-                                Password
-
-                            </label>
-
+                            <label htmlFor="password">Password</label>
                         </div>
+
                     </div>
+
+                    <p className="forgot">Forgot Password?</p>
 
                     <div className="button-section">
 
-                        <button
-                            onClick={handleLogin}
-                            className={`${loading ? "cursor-not-allowed " : "cursor-pointer"}' w-[400px] h-[50px] mt-[10px] bg-green-500 text-white rounded-3xl '`}
-                        >
+                        <button onClick={handleLogin}>
                             {loading ? "Loading..." : "Login"}
                         </button>
-                        <button
-                            onClick={loginWithGoogle}
-                            className={`${loading ? "cursor-not-allowed " : "cursor-pointer"}' mt-[20px] w-[400px] h-[50px] bg-green-500 text-white rounded-3xl '`}
-                        >
-                            <GrGoogle className="inline-block mr-[10px]" /> {loading ? "Loading..." : "Login with Google"}
+
+                        <button onClick={loginWithGoogle}>
+                            <GrGoogle className="google-icon" />
+                            {loading ? "Loading..." : "Login with Google"}
                         </button>
 
-                        <p className="text-gray-600 text-center mt-4 mr-6">
-                            Don't have an account yet? &nbsp;
-                            <span className="text-green-500  cursor-pointer hover:text-green-700">
-                                <button onClick={() => {
-                                    navigate("/register")
-                                }} >Register Now</button>
+                        <p className="register-text">
+                            Don't have an account yet?
+                            <span onClick={() => navigate("/register")}>
+                                Register Now
                             </span>
                         </p>
+
                     </div>
 
                 </div>

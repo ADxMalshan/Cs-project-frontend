@@ -1,0 +1,75 @@
+/* Full page container */
+.loading-container {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  background-color: #170d2e; 
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  z-index: 10000;
+}
+
+/* Card for content */
+.loading-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 2rem;
+  padding: 40px 60px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  animation: cardBounce 2s ease-in-out infinite alternate;
+}
+
+/* Paw animation */
+.paw-animation {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.paw-animation span {
+  font-size: 2.5rem;
+  animation: pawBounce 1.2s ease-in-out infinite;
+  color: #c39fff; /* pastel lilac for contrast on dark background */
+}
+
+.paw-animation span:nth-child(2) { animation-delay: 0.2s; }
+.paw-animation span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Loading text */
+.loading-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff; /* white text stands out on dark purple */
+  margin-bottom: 25px;
+}
+
+/* Spinner */
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top: 6px solid #c39fff; /* spinner accent matching paw color */
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes pawBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px) rotate(-10deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes cardBounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}

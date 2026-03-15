@@ -5,6 +5,12 @@ import StarRating from "./test3";
 import FirstPage from "./client/firstPage";
 import AppointmentHistory from "./client/appointmentHistory";
 import AppointmentUpdatePage from "./client/appoitmentUpdate";
+import ProductCard from "../components/product-card";
+import NotFound from "./client/notFoundPage";
+import CheckoutPage from "./client/checkout";
+import CartPage from "./client/cart";
+import About from "./client/aboutMe";
+import ContactUs from "./client/contactUs";
 export default function HomePage() {
 
     return (
@@ -13,11 +19,17 @@ export default function HomePage() {
             <div className="w-full h-[calc(100vh-70px)] min-h-[calc(100vh-70px)] ">
                 <Routes path="/*">
                     <Route path="/" element={<FirstPage />} />
+                    <Route path="/products" element={<ProductCard />} />
+                    <Route path="/products/:id" element={<ProductOverview />} />
                     <Route path="/review" element={<StarRating />} />
                     <Route path="/history" element={<AppointmentHistory />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<ContactUs />} />
                     <Route path="/update" element={<AppointmentUpdatePage />} />
                     <Route path="/overview/:id" element={<ProductOverview />} />
-                    <Route path="/*" element={<h1>404 Not found</h1>} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/*" element={<NotFound />} />
                 </Routes>
             </div>
 

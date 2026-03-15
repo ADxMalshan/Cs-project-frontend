@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ap-page {
+  width: 100%;
+  color: #fff;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  margin-top: 60px;
+  /* height of header */
+
+}
+
+/* Header row */
+.ap-headRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.ap-title {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+/* Search */
+.ap-search {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px);
+}
+
+.ap-searchIcon {
+  opacity: .85;
+  font-size: 18px;
+}
+
+.ap-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+}
+
+.ap-search input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Cards */
+.ap-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(190px, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.ap-card {
+  border-radius: 18px;
+  padding: 18px 16px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+}
+
+.ap-card.warm {
+  border-color: rgba(255, 193, 7, 0.20);
+}
+
+.ap-card.cool {
+  border-color: rgba(59, 130, 246, 0.20);
+}
+
+.ap-card.deep {
+  border-color: rgba(20, 184, 166, 0.20);
+}
+
+.ap-cardNum {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.ap-cardLabel {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: .8;
+}
+
+/* Panel */
+.ap-panel {
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+}
+
+.ap-panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 6px 14px;
+}
+
+.ap-panelHead h2 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.ap-viewAll {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 9px 12px;
+  border-radius: 14px;
+  transition: .18s ease;
+}
+
+.ap-viewAll:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+/* Table */
+.ap-tableWrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ap-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.ap-table thead th {
+  text-align: left;
+  padding: 14px 12px;
+  font-size: 12px;
+  opacity: .8;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.ap-table tbody td {
+  padding: 14px 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.90);
+  font-size: 14px;
+}
+
+.ap-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ap-empty {
+  text-align: center;
+  padding: 26px 12px !important;
+  opacity: .7;
+}
+
+/* Status badges */
+.ap-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ap-badge.pending {
+  background: rgba(255, 193, 7, 0.12);
+  border-color: rgba(255, 193, 7, 0.20);
+}
+
+.ap-badge.approved {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.20);
+}
+
+.ap-badge.complete {
+  background: rgba(20, 184, 166, 0.12);
+  border-color: rgba(20, 184, 166, 0.20);
+}
+
+/* Actions */
+.ap-actionsCol {
+  width: 280px;
+}
+
+.ap-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ap-btn {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  transition: .18s ease;
+}
+
+.ap-btn:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.ap-btn.approve {
+  background: rgba(59, 130, 246, 0.14);
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
+.ap-btn.complete {
+  background: rgba(20, 184, 166, 0.14);
+  border-color: rgba(20, 184, 166, 0.22);
+}
+
+.ap-btn.cancel {
+  background: rgba(239, 68, 68, 0.14);
+  border-color: rgba(239, 68, 68, 0.22);
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .ap-cards {
+    grid-template-columns: repeat(2, minmax(190px, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .ap-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ap-headRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ap-search {
+    max-width: 100%;
+  }
+}
