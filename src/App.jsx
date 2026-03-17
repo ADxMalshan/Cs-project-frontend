@@ -10,6 +10,7 @@ import AppointmentPage from "./pages/client/appoinmentPage";
 import LoginModal from "./pages/loginModel";
 import RegisterModal from "./pages/registerPage";
 import UserProfile from "./pages/client/userProfile";
+import AppointmentUpdatePage from "./pages/client/appoitmentUpdate";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 					<Route path="/login" element={<LoginModal/>}/>
 					<Route path="/register" element={<RegisterModal/>}/>
 					<Route path="/appointment" element={<AppointmentPage/>}/>
+					<Route path="/update" element={<AppointmentUpdatePage />} />
 					<Route path="/profile" element={<UserProfile/>}/>
 					<Route path="/*" element={<HomePage/>}/>
 				</Routes>

@@ -217,6 +217,7 @@ export default function AdminOrdersPage() {
                                     <p>Name: {displayingOrder.name}</p>
                                     <p>Address: {displayingOrder.address}</p>
                                     <p>Date: {new Date(displayingOrder.date).toDateString()}</p>
+                                    <p>Estimated Date: {new Date(displayingOrder.estimatedDeliveryDate).toDateString()}</p>
                                     <p>Status: {displayingOrder.status}</p>
                                     <p>Total: Rs {displayingOrder.total.toFixed(2)}</p>
 

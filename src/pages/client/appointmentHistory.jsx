@@ -38,7 +38,7 @@ export default function AppointmentHistory() {
     )
     function handleCancelAppointment(appointmentId) {
         const token = localStorage.getItem("token");
-        axios.delete(import.meta.env.VITE_BACKEND_URL + `/api/appointment/${appointmentId}`, {
+        axios.delete(import.meta.env.VITE_BACKEND_URL + "/api/appointment/" + appointmentId, {
             headers: {
                 Authorization: "Bearer " + token,
             }

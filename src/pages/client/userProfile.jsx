@@ -4,14 +4,17 @@ import toast from "react-hot-toast";
 import Loader from "../../components/loader";
 import "../client/css/userProfile.css";
 import { FaPaw, FaUserCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { IoCloseSharp } from "react-icons/io5";
 
 export default function UserProfile() {
     const [loaded, setLoaded] = useState(false);
-
-    const [user, setUser] = useState(null);        
-    const [history, setHistory] = useState([]);    
-
+    const [modalIsDisplaying, setModalIsDisplaying] = useState(false);
+    const [displayingOrder, setDisplayingOrder] = useState(null);
+    const [orders, setOrders] = useState([]);
+    const [user, setUser] = useState(null);
+    const [history, setHistory] = useState([]);
+    const navigate = useNavigate();
     const token = useMemo(() => localStorage.getItem("token"), []);
 
     useEffect(() => {
@@ -40,6 +43,14 @@ export default function UserProfile() {
                     .catch((err) => {
                         console.error(err);
                         toast.error("Failed to load pets data");
+                    });
+                axios.get(base + "/api/order", { headers })
+                    .then((res) => {
+                        setOrders(res.data);
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        toast.error("Failed to load orders data");
                     });
             }
             fetchData();
@@ -70,6 +81,7 @@ export default function UserProfile() {
         if (s === "upcoming") return "upcoming";
         return "";
     }
+    console.log(orders);
     return (
         <div className="pf-page">
             {/* Top bar (simple) */}
@@ -96,7 +108,7 @@ export default function UserProfile() {
                         <Link to="/" onClick={() => {
                             localStorage.removeItem("token")
                             toast.success("Logged out successfully");
-                            }}>
+                        }}>
                             Logout
                         </Link>
                     </div>
@@ -125,8 +137,8 @@ export default function UserProfile() {
                         </div>
                     </section>
 
-                   
-                    
+
+
                     {/* Two column area */}
                     <section className="pf-grid">
                         {/* Personal info */}
@@ -157,14 +169,75 @@ export default function UserProfile() {
                             </div>
                         </div>
 
-                        {/* Pets */}
+                        {modalIsDisplaying && (
+
+                                    <div className="pf-modal-overlay">
+
+                                        <div className="pf-order-modal">
+
+                                            <div className="pf-order-info">
+
+                                                <h3>Order ID: {displayingOrder.orderId}</h3>
+                                                <p>Email: {displayingOrder.email}</p>
+                                                <p>Name: {displayingOrder.name}</p>
+                                                <p>Address: {displayingOrder.address}</p>
+                                                <p>Date: {new Date(displayingOrder.date).toDateString()}</p>
+                                                <p>Estimated Date: {new Date(displayingOrder.estimatedDeliveryDate).toDateString()}</p>
+                                                <p>Status: {displayingOrder.status}</p>
+                                                <p>Total: Rs {displayingOrder.total.toFixed(2)}</p>
+
+                                            </div>
+
+                                            <div className="pf-items-list">
+
+                                                {displayingOrder.billItems.map((item, index) => (
+
+                                                    <div key={index} className="pf-order-item">
+
+                                                        <img
+                                                            src={item.image}
+                                                            alt=""
+                                                        />
+
+                                                        <div>
+
+                                                            <h4>{item.productName}</h4>
+
+                                                            <p>Price: Rs {item.price.toFixed(2)}</p>
+
+                                                            <p>Qty: {item.quantity}</p>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                ))}
+
+                                            </div>
+
+                                            <button
+                                                className="pf-close-btn"
+                                                onClick={() => {
+                                                    setModalIsDisplaying(false);
+                                                }}
+                                            >
+                                                <IoCloseSharp />
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                )}
+
+                        {/* orders */}
                         <div className="pf-card">
                             <div className="pf-cardHead">
-                                <h2>My Pets</h2>
+                                <h2>My Orders</h2>
                             </div>
 
-                            <div className="pf-pets">
-                                {history
+                            <div className="pf-ordersList">
+                                {/* {history
                                     .filter(
                                         (pet, index, self) =>
                                             index === self.findIndex(p => p.name === pet.name)
@@ -189,8 +262,27 @@ export default function UserProfile() {
                                                 </div>
                                             </div>
                                         </div>
-                                    ))}
+                                    ))} */}
 
+                                {
+                                    orders.length === 0 ? (
+                                        <div className="pf-empty">No orders yet</div>
+                                    ) : (
+                                        orders.map((order) => (
+                                            <div className="pf-order" key={order.orderId}>
+                                                <img src={order.billItems[0].image} alt="Item" />
+                                                <p>Order ID <br /> {order.orderId}</p>
+                                                <p>LKR: {order.total}</p>
+                                                <p>Estimated Delivery: {order.estimatedDeliveryDate.split("T")[0]}</p>
+                                                <button onClick={() => {
+                                                    setModalIsDisplaying(true);
+                                                    setDisplayingOrder(order);
+                                                }}>Details</button>
+                                            </div>
+                                        ))
+                                    )
+                                }
+                                
                             </div>
                         </div>
                     </section>
@@ -208,6 +300,7 @@ export default function UserProfile() {
                                         <th>Service</th>
                                         <th>Date</th>
                                         <th>Status</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
@@ -231,6 +324,10 @@ export default function UserProfile() {
                                                         {a.status}
                                                     </span>
                                                 </td>
+                                                <td>
+                                                    <button onClick={() => navigate("/history")}>Details</button>
+                                                </td>
+
                                             </tr>
                                         ))
                                     )}

@@ -20,10 +20,9 @@ export default function HomePage() {
                     <Route path="/" element={<FirstPage />} />
                     <Route path="/products" element={<ProductCard />} />
                     <Route path="/products/:id" element={<ProductOverview />} />
-]                    <Route path="/history" element={<AppointmentHistory />} />
+                    <Route path="/history" element={<AppointmentHistory />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<ContactUs />} />
-                    <Route path="/update" element={<AppointmentUpdatePage />} />
                     <Route path="/overview/:id" element={<ProductOverview />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
                     <Route path="/cart" element={<CartPage />} />

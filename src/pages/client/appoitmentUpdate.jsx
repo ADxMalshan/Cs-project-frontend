@@ -53,7 +53,6 @@ export default function AppointmentUpdatePage() {
 
 
     return (
-        // main container
         <div className="appointment-page-container">
             {/* form division */}
             <div className="appointment-form-container">
@@ -110,7 +109,6 @@ export default function AppointmentUpdatePage() {
 
                 </div>
                 <div className="appointment-form-image-division">
-                    {/* <img src="https://vzkmtbdcbuxxtsmnjwcl.supabase.co/storage/v1/object/public/images/sitting-dog_1.5x-1.gif" alt="ff" /> */}
                     <img src="https://vzkmtbdcbuxxtsmnjwcl.supabase.co/storage/v1/object/public/images/bb.png" alt="" />
                 </div>
             </div>
