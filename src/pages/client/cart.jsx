@@ -128,7 +128,7 @@ export default function CartPage() {
             Item Total: <span>LKR {tikItemLabeledTotal}</span>
           </p>
           <p className="discount">
-            Discount: <span>{tikItemPercentage || 0}%</span> - LKR{" "}
+            Discount: <span>{isNaN(tikItemPercentage) ? 0 : tikItemPercentage}%</span> - LKR{" "}
             {tikItemDiscount || 0}
           </p>
           <p className="subtotal">

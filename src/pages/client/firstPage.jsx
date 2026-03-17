@@ -50,96 +50,96 @@ export default function FirstPage() {
     const gotoAppointment = (service) => {
         navigate("/appointment", { state: { selectedService: service } });
     }
-  /* ---------- STATS COUNTER ---------- */
+    /* ---------- STATS COUNTER ---------- */
 
-function growingStats() {
+    function growingStats() {
 
-    let valueDisplay = document.querySelectorAll(".stats .display");
+        let valueDisplay = document.querySelectorAll(".stats .display");
 
-    valueDisplay.forEach((value) => {
+        valueDisplay.forEach((value) => {
 
-        let targetValue = parseInt(value.getAttribute("data-value"));
-        let currentValue = 0;
-        let increment = targetValue / 150;
+            let targetValue = parseInt(value.getAttribute("data-value"));
+            let currentValue = 0;
+            let increment = targetValue / 150;
 
-        let interval = setInterval(() => {
+            let interval = setInterval(() => {
 
-            currentValue += increment;
+                currentValue += increment;
 
-            if (currentValue >= targetValue) {
-                clearInterval(interval);
-                value.textContent = targetValue + "+";
-            } else {
-                value.textContent = Math.round(currentValue) + "+";
-            }
+                if (currentValue >= targetValue) {
+                    clearInterval(interval);
+                    value.textContent = targetValue + "+";
+                } else {
+                    value.textContent = Math.round(currentValue) + "+";
+                }
 
-        }, 40);
+            }, 40);
 
-    });
+        });
 
-}
-
-
-/* ---------- EXPERIENCE COUNTER ---------- */
-
-function growingExperience() {
-
-    let valueDisplay = document.querySelectorAll(".experience .display");
-
-    valueDisplay.forEach((value) => {
-
-        let targetValue = parseInt(value.getAttribute("data-value"));
-        let currentValue = 0;
-        let increment = targetValue / 150;
-
-        let interval = setInterval(() => {
-
-            currentValue += increment;
-
-            if (currentValue >= targetValue) {
-                clearInterval(interval);
-                value.textContent = targetValue + "+";
-            } else {
-                value.textContent = Math.round(currentValue) + "+";
-            }
-
-        }, 40);
-
-    });
-
-}
-
-
-/* ---------- SCROLL TRIGGER ---------- */
-
-const statsSection = document.querySelector(".stats");
-const experienceSection = document.querySelector(".experience");
-
-let statsAnimated = false;
-let experienceAnimated = false;
-
-window.addEventListener("scroll", () => {
-
-    const windowHeight = window.innerHeight;
-
-    const statsTop = statsSection.getBoundingClientRect().top;
-    const experienceTop = experienceSection.getBoundingClientRect().top;
-
-
-    /* Trigger stats animation */
-    if (!statsAnimated && statsTop < windowHeight - 100) {
-        growingStats();
-        statsAnimated = true;
     }
 
 
-    /* Trigger experience animation */
-    if (!experienceAnimated && experienceTop < windowHeight - 100) {
-        growingExperience();
-        experienceAnimated = true;
+    /* ---------- EXPERIENCE COUNTER ---------- */
+
+    function growingExperience() {
+
+        let valueDisplay = document.querySelectorAll(".experience .display");
+
+        valueDisplay.forEach((value) => {
+
+            let targetValue = parseInt(value.getAttribute("data-value"));
+            let currentValue = 0;
+            let increment = targetValue / 150;
+
+            let interval = setInterval(() => {
+
+                currentValue += increment;
+
+                if (currentValue >= targetValue) {
+                    clearInterval(interval);
+                    value.textContent = targetValue + "+";
+                } else {
+                    value.textContent = Math.round(currentValue) + "+";
+                }
+
+            }, 40);
+
+        });
+
     }
 
-});
+
+    /* ---------- SCROLL TRIGGER ---------- */
+
+    const statsSection = document.querySelector(".stats");
+    const experienceSection = document.querySelector(".experience");
+
+    let statsAnimated = false;
+    let experienceAnimated = false;
+
+    window.addEventListener("scroll", () => {
+
+        const windowHeight = window.innerHeight;
+
+        const statsTop = statsSection.getBoundingClientRect().top;
+        const experienceTop = experienceSection.getBoundingClientRect().top;
+
+
+        /* Trigger stats animation */
+        if (!statsAnimated && statsTop < windowHeight - 100) {
+            growingStats();
+            statsAnimated = true;
+        }
+
+
+        /* Trigger experience animation */
+        if (!experienceAnimated && experienceTop < windowHeight - 100) {
+            growingExperience();
+            experienceAnimated = true;
+        }
+
+    });
     console.log(product);
     return (
         <>
@@ -169,7 +169,7 @@ window.addEventListener("scroll", () => {
 
                             <div className="hero-buttons">
                                 <Link className="btn-cta" to="/appointment">Book Appointment</Link>
-                                <Link className="btn-outline" to="/services">View Services</Link>
+                                <Link className="btn-outline" to="/contact">Contact Us</Link>
                             </div>
 
                         </div>
@@ -310,14 +310,13 @@ window.addEventListener("scroll", () => {
                     {/* product */}
                     <div className="product-section">
                         {
-                            product.map((prct) => {
-
-                                return (
+                            [...product] 
+                                .sort(() => Math.random() - 0.5)
+                                .map((prct) => (
                                     <div className="product-wrapper" key={prct.productId}>
                                         <ProductCard product={prct} />
                                     </div>
-                                )
-                            })
+                                ))
                         }
                     </div>
 

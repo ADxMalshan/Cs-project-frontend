@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "../components/header";
 import ProductOverview from "./client/productOverview";
-import StarRating from "./test3";
 import FirstPage from "./client/firstPage";
 import AppointmentHistory from "./client/appointmentHistory";
 import AppointmentUpdatePage from "./client/appoitmentUpdate";
@@ -14,15 +13,14 @@ import ContactUs from "./client/contactUs";
 export default function HomePage() {
 
     return (
-        <div className="w-full h-screen relative ">
+        <div >
             <Header />
-            <div className="w-full h-[calc(100vh-70px)] min-h-[calc(100vh-70px)] ">
+            <div>
                 <Routes path="/*">
                     <Route path="/" element={<FirstPage />} />
                     <Route path="/products" element={<ProductCard />} />
                     <Route path="/products/:id" element={<ProductOverview />} />
-                    <Route path="/review" element={<StarRating />} />
-                    <Route path="/history" element={<AppointmentHistory />} />
+]                    <Route path="/history" element={<AppointmentHistory />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<ContactUs />} />
                     <Route path="/update" element={<AppointmentUpdatePage />} />

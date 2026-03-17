@@ -13,7 +13,7 @@ import "./css/checkout.css";
 export default function CheckoutPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [cart, setCart] = useState(location.state.items);
+  const [cart, setCart] = useState(location.state.items || []);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
@@ -21,8 +21,7 @@ export default function CheckoutPage() {
   const [isCorrectPhone, setIsCorrectPhone] = useState("empty");
   const [isCorrectAddress, setIsCorrectAddress] = useState("empty");
 
-  function placeOrder() {
-	
+  const placeOrder = () => {
     const orderData = {
       name,
       address,
@@ -47,13 +46,11 @@ export default function CheckoutPage() {
       .catch((error) => {
         toast.error(error.response?.data?.message || "Error placing order");
       });
-  }
-console.log(cart);
+  };
   return (
-    <div className="checkout-container">
-      {/* Order Summary */}
+    <div className="checkout-wrapper">
       <div className="checkout-summary">
-        <h1>Order Summary</h1>
+        <h2>Order Summary</h2>
         <div className="summary-row">
           <span>Item Total</span>
           <span>LKR: {getTikedItemLabeledTotal()}</span>
@@ -68,22 +65,45 @@ console.log(cart);
           <span>Net Total</span>
           <span>LKR: {getTikedItemTotal()}</span>
         </div>
+        <div>
+          {cart.filter((item) => item.tikIndex.isTiked).length === 0 && (
+            <p className="empty-cart-msg">No items selected for checkout</p>
+          )}
+          <div className={`checkout-items ${cart.filter((item) => item.tikIndex.isTiked).length > 0 ? "" : "hidden"}`}>
+            {cart
+              .filter((item) => item.tikIndex.isTiked)
+              .map((item) => (
+                <div className="checkout-item" key={item.productId}>
+                  <img src={item.image} alt={item.name} />
+                  <div className="item-details">
+                    <span>{item.name}</span>
+                    <span>Quantity: {item.quantity}</span>
+                    <span>Price LKR: {item.price}</span>
+                    <span>Total LKR: {item.price * item.quantity}</span>
+                  </div>
+
+                </div>
+              ))}
+
+          </div>
+
+        </div>
       </div>
 
-      {/* Checkout Form */}
       <div className="checkout-form">
+        <h2>Delivery Details</h2>
+
         <div className="form-group">
           <input
             type="text"
             value={name}
-            placeholder="Full Name"
-            className="input-field"
             onChange={(e) => {
               setName(e.target.value);
               setIsCorrectName(e.target.value ? "true" : "empty");
             }}
+            required
           />
-          <label>Full Name</label>
+          <label className={name ? "filled" : ""}>Full Name</label>
         </div>
 
         <div className="form-group">
@@ -91,14 +111,6 @@ console.log(cart);
             type="tel"
             maxLength={10}
             value={phone}
-            placeholder="Phone"
-            className={`input-field ${
-              isCorrectPhone === "true"
-                ? "valid"
-                : isCorrectPhone === "false"
-                ? "invalid"
-                : ""
-            }`}
             onChange={(e) => {
               const val = e.target.value;
               setPhone(val);
@@ -106,10 +118,12 @@ console.log(cart);
               else if (val.length < 10 || val.length > 10) setIsCorrectPhone("false");
               else setIsCorrectPhone("empty");
             }}
+            className={isCorrectPhone === "false" ? "invalid" : ""}
+            required
           />
-          <label>Phone</label>
+          <label className={phone ? "filled" : ""}>Phone Number</label>
           {isCorrectPhone === "false" && (
-            <span className="error-msg">Please enter a valid phone number</span>
+            <span className="error-msg">Enter a valid 10-digit phone number</span>
           )}
         </div>
 
@@ -117,24 +131,22 @@ console.log(cart);
           <input
             type="text"
             value={address}
-            placeholder="Address"
-            className="input-field"
             onChange={(e) => {
               setAddress(e.target.value);
               setIsCorrectAddress(e.target.value ? "true" : "empty");
             }}
+            required
           />
-          <label>Address</label>
+          <label className={address ? "filled" : ""}>Address</label>
         </div>
 
         <button
-          className={`place-order-btn ${
-            isCorrectName !== "true" ||
+          className={`place-order-btn ${isCorrectName !== "true" ||
             isCorrectPhone !== "true" ||
             isCorrectAddress !== "true"
-              ? "disabled"
-              : ""
-          }`}
+            ? "disabled"
+            : ""
+            }`}
           onClick={placeOrder}
           disabled={
             isCorrectName !== "true" ||

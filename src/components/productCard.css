@@ -103,7 +103,7 @@
 
 .sold-image{
     position:absolute;
-    top:25px;
+    top:20%;
     left:50%;
     transform:translateX(-50%);
     width:130px;

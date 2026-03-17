@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import AdminPage from "./pages/adminPage";
 
-import Testing from "./pages/testing";
 import { Toaster } from "react-hot-toast";
 
 import HomePage from "./pages/homePage";
@@ -21,7 +20,6 @@ function App() {
 					<Route path="/admin/*" element={<AdminPage/>}/>
 					<Route path="/login" element={<LoginModal/>}/>
 					<Route path="/register" element={<RegisterModal/>}/>
-					<Route path="/testing" element={<Testing/>}/>
 					<Route path="/appointment" element={<AppointmentPage/>}/>
 					<Route path="/profile" element={<UserProfile/>}/>
 					<Route path="/*" element={<HomePage/>}/>

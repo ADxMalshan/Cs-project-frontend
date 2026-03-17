@@ -182,7 +182,7 @@ export default function UserProfile() {
                                             </div>
 
                                             <div className="pf-petBody">
-                                                <div className="pf-petName">{pet.name}</div>
+                                                <div className="pf-petName">{pet.name.toUpperCase()}</div>
                                                 <div className="pf-petMeta">
                                                     {pet.petDetails?.[0]?.petType || "Pet"}
                                                 </div>

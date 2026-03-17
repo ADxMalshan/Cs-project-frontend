@@ -20,7 +20,6 @@ export default function Header() {
             }).then((res) => {
                 setLoaded(true);
                 setUser(res.data.user);
-                // console.log(res.data.user);
             })
             return;
 
@@ -51,7 +50,6 @@ export default function Header() {
             <nav>
                 <Link to="/" className="link" onClick={() => window.scrollTo(0, 0)}>Home</Link>
                 <Link to="/about" className="link">About Us</Link>
-                <Link to="/contact" className="link">Contact</Link>
                 <Link to="/cart" className="link"><FaCartArrowDown /></Link>
                 {
                     user ? (

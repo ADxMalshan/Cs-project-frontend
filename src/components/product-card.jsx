@@ -41,7 +41,7 @@ export default function ProductCard(props) {
 
                     <div className="sold-overlay"></div>
 
-                    <img src="soldOut.png" alt="sold out" className="sold-image" />
+                    <img src="https://vzkmtbdcbuxxtsmnjwcl.supabase.co/storage/v1/object/public/images/new/sold-out-grunge-rubber-stamp-free-png.png" alt="sold out" className="sold-image" />
 
                     <img
                         className="product-image"
@@ -99,7 +99,7 @@ export default function ProductCard(props) {
                                 {product.name}
                             </p>
 
-                            <p className="product-price">
+                            <p className="product-price">LKR: {" "}
 
                                 {product.price.toFixed(2)}
 
