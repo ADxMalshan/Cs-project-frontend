@@ -21,17 +21,20 @@ export default function RegisterModal() {
     function handleChange(e) {
         const { name, value } = e.target;
         if (name === "phone") {
-            // Allow only digits and limit to 10 characters
             const cleanedValue = value.replace(/\D/g, "").slice(0, 10);
             setFormData((prev) => ({ ...prev, [name]: cleanedValue }));
         } else {
             setFormData((prev) => ({ ...prev, [name]: value }));
         }
         if(name==="firstName" || name==="lastName") {
-            //remove any non-alphabetic characters from the name fields
             const cleanedValue = value.replace(/[^a-zA-Z\s]/g, "");
             setFormData((prev) => ({ ...prev, [name]: cleanedValue }));
         }
+        if(name==="email") {
+            const cleanedValue = value.replace(/[^a-zA-Z0-9@._-]/g, "");
+            setFormData((prev) => ({ ...prev, [name]: cleanedValue }));
+        }
+
     }
 
     function handleRegister() {
@@ -78,6 +81,7 @@ export default function RegisterModal() {
                             name="firstName"
                             value={formData.firstName}
                             placeholder="First Name"
+                            required
 
                         />
             
@@ -91,6 +95,7 @@ export default function RegisterModal() {
                             value={formData.lastName}
                             placeholder="Last Name"
                             id="last_name"
+                            required
                         />
                        
                     </div>
@@ -103,6 +108,8 @@ export default function RegisterModal() {
                             placeholder="E-mail"
                             name="email"
                             id="email"
+                            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                            required
                         />
                         
                     </div>
@@ -117,6 +124,7 @@ export default function RegisterModal() {
                             id="phone_number"
                             maxLength={"10"}
                             minLength={"10"}
+                            required
                         />
                         
                     </div>
@@ -129,6 +137,7 @@ export default function RegisterModal() {
                             placeholder="Password"
                             name="password"
                             id="password"
+                            required
                         />
                         
                     </div>
@@ -141,6 +150,7 @@ export default function RegisterModal() {
                             placeholder="Confirm Password"
                             name="confirmPassword"
                             id="confirm_password"
+                            required
                         />
                         
                     </div>

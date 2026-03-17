@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 export default function UserProfile() {
     const [loaded, setLoaded] = useState(false);
 
-    const [user, setUser] = useState(null);        // { fullName, email, phone, address, role, profilePic }
-    const [history, setHistory] = useState([]);    // [ { id, service, date, time, status } ]
+    const [user, setUser] = useState(null);        
+    const [history, setHistory] = useState([]);    
 
     const token = useMemo(() => localStorage.getItem("token"), []);
 
@@ -70,7 +70,6 @@ export default function UserProfile() {
         if (s === "upcoming") return "upcoming";
         return "";
     }
-    console.log(history)
     return (
         <div className="pf-page">
             {/* Top bar (simple) */}
@@ -135,7 +134,6 @@ export default function UserProfile() {
                             <div className="pf-cardHead">
                                 <h2>Personal Information</h2>
                             </div>
-
                             <div className="pf-info">
                                 <div className="pf-row">
                                     <div className="pf-key">Full Name</div>
