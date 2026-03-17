@@ -6,11 +6,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function AppointmentUpdatePage() {
     const locationData = useLocation()
     const navigate = useNavigate();
-    const [name, setName] = useState(locationData.state.appointments.name);
-    const [phone, setPhone] = useState(locationData.state.appointments.phoneNumber);
-    const [service, setService] = useState(locationData.state.appointments.service);
-    const [details, setDetails] = useState(locationData.state.appointments.details);
-    const [date, setDate] = useState(locationData.state.appointments.appointmentDate);
+    const [name, setName] = useState(locationData.state.appointments.name? locationData.state.appointments.name : "");
+    const [phone, setPhone] = useState(locationData.state.appointments.phoneNumber? locationData.state.appointments.phoneNumber : "");
+    const [service, setService] = useState(locationData.state.appointments.service? locationData.state.appointments.service : "");
+    const [details, setDetails] = useState(locationData.state.appointments.details? locationData.state.appointments.details : "");
+    const [date, setDate] = useState(locationData.state.appointments.appointmentDate?.split("T")[0] || "");
     const [petType, setPetType] = useState(locationData.state.appointments.petDetails[0].petType);
     const [petBreed, setPetBreed] = useState(locationData.state.appointments.petDetails[0].petBreed);
     const [petAge, setPetAge] = useState(locationData.state.appointments.petDetails[0].petAge);
@@ -29,7 +29,7 @@ export default function AppointmentUpdatePage() {
             appointmentDate: date
         };
 
-        axios.put(import.meta.env.VITE_BACKEND_URL+"/api/appointment/"+locationData.state.appointments.appointmentId, appointmentData, {
+        axios.put(import.meta.env.VITE_BACKEND_URL+"/api/appointment/user/"+locationData.state.appointments.appointmentId, appointmentData, {
             headers: {
                 Authorization: "Bearer " + token,
             }
@@ -61,7 +61,7 @@ export default function AppointmentUpdatePage() {
                     <div className="appointment-form-inputs-division">
                         <div className="input-group">
                             <label htmlFor="name">Book an Appointment</label>
-                            <input type="text" value={name} placeholder="Your Name" onChange={(e) => {setName(e.target.value);}}  />
+                            <input type="text" value={name} placeholder="Your Name" onChange={(e) => {setName(e.target.value);}} required  />
                         </div>
                         <div className="input-group">
                             <label htmlFor="phone">Phone Number</label>
@@ -101,7 +101,7 @@ export default function AppointmentUpdatePage() {
                             <input type="date" id="date" value={date} onChange={(e) => { setDate(e.target.value) }} required />
                         </div>
                         <div className="appointment-form-button-division">
-                            <button onClick={handleSubmit}  className="appointment-submit-button">Submit</button>
+                            <button onClick={handleSubmit}   className="appointment-submit-button">Submit</button>
                             <button className="appointment-cancel-button">Cancel</button>
                         </div>
                     </div>

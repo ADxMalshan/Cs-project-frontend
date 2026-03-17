@@ -122,7 +122,12 @@
     font-size: 16px;
     font-weight: 600;
     color: black;
-    background-color: var(--accent-cyan);
+    background: linear-gradient(
+    135deg,
+    #6fb1c7,   /* light blue */
+    #4f9fb6,   /* medium */
+    #2f7ea1    /* deep blue */
+  );
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -138,7 +143,7 @@
     background-color: grey;
     cursor: not-allowed;
     border: none;
-    color: #f0f0f0;
+    color: black;
 }
 
 .appointment-form-image-division img {
