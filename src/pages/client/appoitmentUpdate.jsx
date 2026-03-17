@@ -14,7 +14,6 @@ export default function AppointmentUpdatePage() {
     const [petType, setPetType] = useState(locationData.state.appointments.petDetails[0].petType);
     const [petBreed, setPetBreed] = useState(locationData.state.appointments.petDetails[0].petBreed);
     const [petAge, setPetAge] = useState(locationData.state.appointments.petDetails[0].petAge);
-    console.log(locationData.state.appointments);
     function handleSubmit() {
        const token = localStorage.getItem("token");
          const appointmentData = {
@@ -36,7 +35,6 @@ export default function AppointmentUpdatePage() {
             }
         })
         .then(response => {
-            console.log("Appointment updated successfully:", response.data);
             toast.success("Appointment Updated successfully");
             setName("");
             setPhone("");

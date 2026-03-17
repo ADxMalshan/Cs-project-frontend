@@ -21,7 +21,6 @@ export default function UserView() {
                 }
                 ).then(
                     (response) => {
-                        console.log(response.data)
                         setusers(response.data)
                         setLoaded(true)
                     }
@@ -155,7 +154,6 @@ export default function UserView() {
                                             <select value={users.role} onChange={
                                                 (e) => {
                                                     updateUser(users.email, e.target.value)
-                                                    console.log(e.target.value)
                                                 }}>
                                                 <option value="admin">Admin</option>
                                                 <option value="user">User</option>

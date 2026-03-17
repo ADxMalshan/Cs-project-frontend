@@ -1,6 +1,5 @@
 export  function getCart() {
     let cart = localStorage.getItem("cart");
-    // console.log(cart)
 
     if (cart == null) {
         cart = []
@@ -67,7 +66,6 @@ export function getTotal(array) {
     array.forEach((product) => {
         total += product
     })
-    // console.log(total)
     return total
 }
 export function getTotalForLabelledPrice() {

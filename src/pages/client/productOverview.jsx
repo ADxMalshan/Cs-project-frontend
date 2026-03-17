@@ -72,9 +72,6 @@ export default function ProductOverview() {
 		emptyIcon: <i className="far fa-star" />,
 		halfIcon: <i className="fa fa-star-half-alt" />,
 		filledIcon: <i className="fa fa-star" />,
-		onChange: (newValue) => {
-			console.log(`Example 3: new value is ${newValue}`);
-		},
 	};
 	function handleDeleteComment(commentId) {
 		const token = localStorage.getItem("token");
@@ -99,7 +96,6 @@ export default function ProductOverview() {
 	}
 
 
-	console.log(product);
 
 
 	return (

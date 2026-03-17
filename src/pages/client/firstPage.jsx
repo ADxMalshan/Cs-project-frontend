@@ -121,8 +121,8 @@ export default function FirstPage() {
 
         const windowHeight = window.innerHeight;
 
-        const statsTop = statsSection.getBoundingClientRect().top;
-        const experienceTop = experienceSection.getBoundingClientRect().top;
+        const statsTop = statsSection?.getBoundingClientRect()?.top;
+        const experienceTop = experienceSection?.getBoundingClientRect()?.top;
 
 
         /* Trigger stats animation */
@@ -139,7 +139,6 @@ export default function FirstPage() {
         }
 
     });
-    console.log(product);
     return (
         <>
             {loaded &&
@@ -309,7 +308,7 @@ export default function FirstPage() {
                     {/* product */}
                     <div className="product-section">
                         {
-                            [...product] 
+                            [...product]
                                 .sort(() => Math.random() - 0.5)
                                 .map((prct) => (
                                     <div className="product-wrapper" key={prct.productId}>

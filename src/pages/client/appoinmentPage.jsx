@@ -43,7 +43,6 @@ export default function AppointmentPage() {
             }
         })
         .then(response => {
-            console.log("Appointment booked successfully:", response.data);
             toast.success("Appointment booked successfully");
             setName("");
             setPhone("");

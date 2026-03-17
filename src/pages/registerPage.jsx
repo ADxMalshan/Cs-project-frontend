@@ -55,7 +55,6 @@ export default function RegisterModal() {
         axios
             .post(import.meta.env.VITE_BACKEND_URL + "/api/user/", payload)
             .then((response) => {
-                console.log("Registration successful", response.data);
                 toast.success("Registration successful");
                 navigate("/login");
             })

@@ -29,7 +29,6 @@ export default function AppointmentHistory() {
                     (res) => {
                         setAppointment(res.data)
                         setLoaded(true)
-                        console.log(res.data)
                     }
                 ).catch((error) => {
                     console.error("Error fetching orders:", error);

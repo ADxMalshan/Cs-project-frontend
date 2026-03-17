@@ -28,7 +28,6 @@ export default function AdminHeader({
                     headers: { Authorization: "Bearer " + token },
                 })
                 .then((res) => {
-                    console.log(res.data.user);
                     if (res.data.user.role !== 'admin' && res.data.user.role !== 'superadmin') {
                         toast.error("Unauthorized");
                         Navigate("/");
@@ -45,7 +44,6 @@ export default function AdminHeader({
 
 
     }, [loaded])
-    console.log(userDetails);
     return (
         <header className="hd-wrap">
             {/* Left: brand */}

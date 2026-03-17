@@ -26,16 +26,13 @@ export default function LoginModal({ onClose }) {
                 })
                 .then((response) => {
                     localStorage.setItem("token", response.data.token);
-                    console.log(response.data.token);
                     const user = response.data.user;
                     const newUser = response.data.usercreated;
-                    // console.log(response.data.usercreated)
                     if (user.role === "admin" || user.role == "superadmin") {
                         navigate("/admin");
                     } else {
                         navigate("/");
                     }
-                    console.log("Login successful", response.data);
                     toast.custom((t) => (
                         <div
                             className={`toast-container ${t.visible ? "slide-in-left" : "slide-out-left"
@@ -89,13 +86,10 @@ export default function LoginModal({ onClose }) {
                 password: password,
             })
             .then((response) => {
-                console.log("Login successful", response.data);
                 localStorage.setItem("token", response.data.token)
-                console.log(response.data.token);
                 // setIsLoggedIn(false)
 
                 const user = response.data.user;
-                // console.log(user.profilePicture);
                 if (user.role === "admin" || user.role === "superadmin") {
                     navigate("/admin");
                 } else {

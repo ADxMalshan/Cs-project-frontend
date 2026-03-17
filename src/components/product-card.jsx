@@ -29,7 +29,6 @@ export default function ProductCard(props) {
 
 
     const product = props.product;
-    console.log(product);
 
     return (
 

@@ -70,7 +70,6 @@ export default function AdminAppointments() {
             console.log(err);
         }
     }
-    console.log(appointments)
     return (
         <div className="ap-page">
             {/* Top header row */}
