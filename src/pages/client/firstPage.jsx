@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { faHeartPulse, faHouse, faPersonWalking, faScissors } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { array, func } from "prop-types";
 import ProductCard from "../../components/product-card";
 import LoadingPage from "../../components/loader";
 export default function FirstPage() {
@@ -320,7 +319,6 @@ export default function FirstPage() {
                         }
                     </div>
 
-                    {/* <ProductCard product={product} stock={stock} /> */}
 
                     {/* MOBILE SERVICE */}
                     <section className="mobile-service">
