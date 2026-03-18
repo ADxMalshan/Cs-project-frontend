@@ -92,7 +92,7 @@ export function getTikedItemTotal() {
     let cart = getCart()
     let total = 0
     for (let i = 0; i < cart.length; i++) {
-
+        console.log(cart[i])
         if (cart[i].tikIndex.isTiked == true) {
             total += cart[i].price * cart[i].quantity
         }

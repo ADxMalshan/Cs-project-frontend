@@ -139,7 +139,9 @@ export default function CartPage() {
           <button
             className="checkout-btn"
             onClick={() =>
-              navigate("/checkout", { state: { items: cart } })
+              navigate("/checkout", { 
+                state: { items: cart ,from: "cart"}
+               })
             }
           >
             Checkout ({tikItemImages.length})

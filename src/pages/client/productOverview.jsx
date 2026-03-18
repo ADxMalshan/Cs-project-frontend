@@ -14,14 +14,11 @@ export default function ProductOverview() {
 	if (params.id == null) {
 		window.location.href = "/products";
 	}
-
 	const [product, setProduct] = useState(null);
-	const boxARef = useRef(null);
-	const [showBoxB, setShowBoxB] = useState(false);
-	const [status, setStatus] = useState("loading"); // loaded, error
+	const [status, setStatus] = useState("loading");
 	const navigate = useNavigate();
 	const [user, setUser] = useState(null);
-	const [viewComments, setViewComments] = useState(false);
+  const discount = product ? (product.labeledPrice - product.price)/product.labeledPrice * 100 : 0;
 	useEffect(() => {
 		if (status == "loading") {
 			axios
@@ -41,62 +38,8 @@ export default function ProductOverview() {
 				});
 		}
 	}, [status]);
-	// Intersection Observer to reveal the div when 50% visible
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				// If Box A is NOT visible, show Box B
-				setShowBoxB(!entry.isIntersecting);
-			},
-			{ threshold: 0 } // trigger as soon as box A leaves viewport
-		);
 
-		if (boxARef.current) {
-			observer.observe(boxARef.current);
-		}
-
-		return () => {
-			if (boxARef.current) {
-				observer.unobserve(boxARef.current);
-			}
-		};
-	}, [viewComments]);
-
-	const thirdExample = {
-		size: 15,
-		count: 5,
-		isHalf: true,
-		value: product ? Math.round(product.rating * 2) / 2 : 0,
-		color: "black",
-		activeColor: "yellow",
-		emptyIcon: <i className="far fa-star" />,
-		halfIcon: <i className="fa fa-star-half-alt" />,
-		filledIcon: <i className="fa fa-star" />,
-	};
-	function handleDeleteComment(commentId) {
-		const token = localStorage.getItem("token");
-		const data = {
-			commentId: commentId,
-			productId: product.productId
-		}
-		axios.delete(import.meta.env.VITE_BACKEND_URL + "/api/reviewsAndComments",
-			{
-				data: data,
-				headers: {
-					Authorization: "Bearer " + token,
-				},
-			}
-		).then(() => {
-			toast.success("Comment deleted successfully");
-			navigate(0);
-		}).catch((error) => {
-			console.log(error);
-			toast.error("Error deleting comment");
-		});
-	}
-
-
-
+console.log(discount)
 
 	return (
   <div className="productPage">
@@ -174,6 +117,7 @@ export default function ProductOverview() {
               onClick={() => {
                 navigate("/checkout", {
                   state: {
+                    from: "productOverview",
                     items: [
                       {
                         productId: product.productId,
@@ -181,6 +125,8 @@ export default function ProductOverview() {
                         altNames: product.altNames,
                         price: product.price,
                         labeledPrice: product.labeledPrice,
+                        discount: product.labeledPrice - product.price,
+                        discountPercentage: discount,
                         image: product.images[0],
                         quantity: 1,
                         tikIndex: {

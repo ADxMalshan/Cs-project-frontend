@@ -14,6 +14,7 @@ export default function CheckoutPage() {
   const location = useLocation();
   const navigate = useNavigate();
   const [cart, setCart] = useState(location.state.items || []);
+  const from = location.state.from;
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
@@ -33,7 +34,6 @@ export default function CheckoutPage() {
           quantity: item.quantity,
         })),
     };
-
     const token = localStorage.getItem("token");
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/api/order`, orderData, {
@@ -47,23 +47,24 @@ export default function CheckoutPage() {
         toast.error(error.response?.data?.message || "Error placing order");
       });
   };
+  console.log(location.state);
   return (
     <div className="checkout-wrapper">
       <div className="checkout-summary">
         <h2>Order Summary</h2>
         <div className="summary-row">
           <span>Item Total</span>
-          <span>LKR: {getTikedItemLabeledTotal()}</span>
+          <span>LKR: {from === "productOverview" ? cart[0].labeledPrice.toFixed(2) : getTikedItemLabeledTotal()}</span>
         </div>
         <div className="summary-row discount">
           <span>Discount</span>
           <span>
-            LKR: {getTikedItemDiscount()} ({getTikedItemDiscountPercentage()}%)
+            LKR: {from === "productOverview" ? cart[0].discount.toFixed(2) : getTikedItemDiscount()} ({ from === "productOverview" ? cart[0].discountPercentage.toFixed(2) : getTikedItemDiscountPercentage()}%)
           </span>
         </div>
         <div className="summary-row total">
           <span>Net Total</span>
-          <span>LKR: {getTikedItemTotal()}</span>
+          <span>LKR: { from === "productOverview" ? cart[0].price * cart[0].quantity : getTikedItemTotal()}</span>
         </div>
         <div>
           {cart.filter((item) => item.tikIndex.isTiked).length === 0 && (
